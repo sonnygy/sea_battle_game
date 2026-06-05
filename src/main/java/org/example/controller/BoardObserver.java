@@ -1,6 +1,6 @@
 package org.example.controller;
 
-public class GameObserver implements Observer{
+public class BoardObserver implements Observer{
     @Override
     public void update(){}
 }

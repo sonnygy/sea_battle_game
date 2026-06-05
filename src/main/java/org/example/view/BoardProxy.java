@@ -1,6 +1,7 @@
 package org.example.view;
 import org.example.model.*;
-public class BoardView implements BoardComponent{
+
+public class BoardProxy implements BoardComponent {
     @Override
     public void draw(Board board) {
         Cell[][] cells = board.getCells();
@@ -17,12 +18,12 @@ public class BoardView implements BoardComponent{
 
                 switch (cells[y][x].getState()) {
                     case empty -> System.out.print("□ ");
-                    case ship -> System.out.print("■ ");
+                    case ship -> System.out.print("□ ");
                     case miss -> System.out.print("⊡ ");
                     case hit -> System.out.print("⊞ ");
                 }
             }
             System.out.println();
         }
-    }
+    };
 }

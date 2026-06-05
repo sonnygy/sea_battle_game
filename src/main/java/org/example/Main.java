@@ -1,10 +1,10 @@
 package org.example;
 
 import org.example.model.Board;
+import org.example.model.GameBuilder;
 
 public class Main {
     static void main() {
-        Board board = new Board();
-
+        GameManager game = GameManager.getInstance();
     }
 }

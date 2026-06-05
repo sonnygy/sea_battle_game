@@ -1,16 +1,15 @@
-package org.example.model;
+package org.example;
+
+import org.example.model.Game;
+import org.example.model.GameBuilder;
 
 public class GameManager {
     private static GameManager instance;
     private Game currentGame;
 
-    private void start() {
-        GameBuilder game = new GameBuilder();
-        currentGame = game.build();
-    }
-
     private GameManager() {
-        start();
+        GameBuilder game = new GameBuilder();
+        this.currentGame = game.build();
     }
 
     public static GameManager getInstance() {
