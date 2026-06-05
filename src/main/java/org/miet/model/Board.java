@@ -1,6 +1,6 @@
 package org.miet.model;
 public class Board { // Доска
-    private final int SIZE = 10;
+    public static final int SIZE = 10;
     private Cell[][] cellMatrix; // Клетки в доске
 
     Board(){
