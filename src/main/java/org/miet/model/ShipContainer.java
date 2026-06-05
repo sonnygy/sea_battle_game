@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ShipContainer {
     private ArrayList<Ship> ships;
 
-    ShipContainer(){
+    public ShipContainer(){
         ships = new ArrayList<>();
     }
 

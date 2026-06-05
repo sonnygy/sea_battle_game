@@ -2,7 +2,7 @@ package org.miet.model;
 public class BoardBuilder { // Должен ОТВЕЧАТЬ за ПРАВИЛЬНОСТЬ установки деталек кораблей в клетки
     private Board board;
 
-    BoardBuilder(){
+    public BoardBuilder(){
         board = new Board();
     }
 

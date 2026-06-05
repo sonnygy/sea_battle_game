@@ -1,8 +1,12 @@
 package org.miet;
 
+import org.miet.UI.UIController;
 import org.miet.model.Board;
+import org.miet.model.BoardBuilder;
 import org.miet.model.BoardProxy;
 import org.miet.model.ShipContainer;
+
+import java.io.IOException;
 
 public class GameInstance { // Синглетон игры
     private static GameInstance gameInstance;
@@ -17,6 +21,8 @@ public class GameInstance { // Синглетон игры
 
     private ShipContainer shipContainer1;
     private ShipContainer shipContainer2;
+
+    private UIController ui;
 
     private GameInstance(){ // Приватный конструктор не трогаем
         state = GameState.start;
@@ -41,19 +47,43 @@ public class GameInstance { // Синглетон игры
         return new BoardProxy(board2);
     }
 
-    public void play(){ // Вызываем чтоб начать
+    public void play() { // Вызываем чтоб начать
         // Здесь идет вся игра (зависит от state)
-        switch (state){
-            case start: // Здесь начинаем (Менюшка приветствие)
-
-            case p1setup: // Здесь
-            case p2setup: // расставляем
-
-            case p1move: // Здесь
-            case p2move: // ходим
-
-            case p1win: // Здесь
-            case p2win: // побеждаем
+        while (true) {
+            switch (state) {
+                case start:
+                    init();
+                    break;
+                case p1setup:
+                    setup();
+                    break;
+            }
         }
     }
+
+    private void init(){
+        shipContainer1 = new ShipContainer();
+        shipContainer2 = new ShipContainer();
+        try {
+            ui = new UIController();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        changeState(GameState.p1setup);
+    }
+
+    private void setup(){
+        if (state == GameState.p1setup){
+            BoardBuilder boardBuilder = new BoardBuilder();
+            try {
+                ui.drawSetup();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            while (true){
+
+            }
+        }
+    }
+
 }
