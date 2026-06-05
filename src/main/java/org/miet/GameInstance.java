@@ -2,6 +2,7 @@ package org.miet;
 
 import org.miet.model.Board;
 import org.miet.model.BoardProxy;
+import org.miet.model.ShipContainer;
 
 public class GameInstance { // Синглетон игры
     private static GameInstance gameInstance;
@@ -13,6 +14,9 @@ public class GameInstance { // Синглетон игры
 
     private BoardProxy boardProxy1;
     private BoardProxy boardProxy2;
+
+    private ShipContainer shipContainer1;
+    private ShipContainer shipContainer2;
 
     private GameInstance(){ // Приватный конструктор не трогаем
         state = GameState.start;

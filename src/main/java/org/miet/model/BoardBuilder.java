@@ -6,7 +6,35 @@ public class BoardBuilder { // Должен ОТВЕЧАТЬ за ПРАВИЛЬ
         board = new Board();
     }
 
-    // TODO: проверка на наличие деталек вокруг и на месте устанавливаемой детальки (много писать)
+    private boolean checkNeighbours(int x, int y, Orientation orientation){ // Проверятель соседей
+        boolean free = true;
+        int[] dx = new int[0];
+        int[] dy = new int[0];
+
+        if (orientation == Orientation.vertical) {
+            dx = new int[]{-1, -1, -1, 0, 0, 1, 1, 1};
+            dy = new int[]{-1, 0, 1, 0, 1, -1, 0, 1};
+        }
+        if (orientation == Orientation.horizontal){
+            dx = new int[]{-1, -1, 0, 0, 0, 1, 1, 1};
+            dy = new int[]{-1,  1,-1, 0, 1,-1, 0, 1};
+        }
+
+        for (int i = 0; i < dy.length; i++) {
+            if ((x + dx[i] < 0) || (x + dx[i] >= Board.SIZE) || (y + dy[i] < 0) || (y + dy[i] >= Board.SIZE)){
+                continue;
+            }
+            else {
+                if (board.getCellState(x + dx[i], y + dy[i]) == CellState.ship){
+                    free = false;
+                    break;
+                }
+            }
+        }
+
+        return free;
+    }
+
     // TODO: надо будет переместить логику создания кораблей и привязки к контейнеру в более уместное место, но пока так
     public void addShip(int x, int y, Orientation orientation, int size, ShipBuilder shipBuilder){
         try {
@@ -15,8 +43,19 @@ public class BoardBuilder { // Должен ОТВЕЧАТЬ за ПРАВИЛЬ
             }
             ShipPart partBuffer;
             for (int i = 0; i < size; i++) {
+                if (orientation == Orientation.vertical){
+                    if (checkNeighbours(x, y+i, orientation)){
+                        throw new RuntimeException("Ship interferes with other ships");
+                    }
+                } else if (orientation == Orientation.horizontal) {
+                    if (checkNeighbours(x+i, y, orientation)){
+                        throw new RuntimeException("Ship interferes with other ships");
+                    }
+                }
+
                 partBuffer = new ShipPart();
                 shipBuilder.addPart(partBuffer);
+
                 if (orientation == Orientation.vertical){
                     board.addShipPart(x, (y+i), partBuffer);
                 } else if (orientation == Orientation.horizontal) {
