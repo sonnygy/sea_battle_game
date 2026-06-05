@@ -1,5 +1,5 @@
 package org.example.controller;
 
 public interface Observer {
-    void update();
+    void update(Controller controller);
 }
