@@ -1,5 +1,4 @@
 package org.miet.model;
-// TODO: ---Все запрогать---
 public class BoardBuilder { // Должен ОТВЕЧАТЬ за ПРАВИЛЬНОСТЬ установки деталек кораблей в клетки
     private Board board;
 
@@ -8,14 +7,13 @@ public class BoardBuilder { // Должен ОТВЕЧАТЬ за ПРАВИЛЬ
     }
 
     // TODO: проверка на наличие деталек вокруг и на месте устанавливаемой детальки (много писать)
-    // Создать корабль и добавить его на доску по кусочкам
-    public void addShip(int x, int y, Orientation orientation, int size){
+    // TODO: надо будет переместить логику создания кораблей и привязки к контейнеру в более уместное место, но пока так
+    public void addShip(int x, int y, Orientation orientation, int size, ShipBuilder shipBuilder){
         try {
             if ((orientation == Orientation.vertical && y + size >= Board.SIZE) || (orientation == Orientation.horizontal && x + size >= Board.SIZE)){
                 throw new RuntimeException("Ship does not fit in board bounds");
             }
             ShipPart partBuffer;
-            ShipBuilder shipBuilder = new ShipBuilder(size);;
             for (int i = 0; i < size; i++) {
                 partBuffer = new ShipPart();
                 shipBuilder.addPart(partBuffer);
@@ -25,6 +23,7 @@ public class BoardBuilder { // Должен ОТВЕЧАТЬ за ПРАВИЛЬ
                     board.addShipPart((x+i), y, partBuffer);
                 }
             }
+            shipBuilder.getShip();
         }
         catch (RuntimeException e){
             throw e;

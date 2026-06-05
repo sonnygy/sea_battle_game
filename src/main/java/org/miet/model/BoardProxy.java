@@ -3,7 +3,7 @@ public class BoardProxy { // Используем для доступа к до�
     private Board board;
     private BoardMode mode;
 
-    BoardProxy(Board board){
+    public BoardProxy(Board board){
         this.board = board;
     }
 
@@ -21,7 +21,7 @@ public class BoardProxy { // Используем для доступа к до�
         return cellState;
     }
 
-    public void changeState(){ // Меняем состояние при смене хода
+    public void flipState(){ // Меняем состояние при смене хода
         if (mode == BoardMode.ally){
             mode = BoardMode.enemy;
         } else if (mode == BoardMode.enemy) {

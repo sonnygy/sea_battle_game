@@ -17,8 +17,8 @@ public class Ship { // Корабль
 
         alive = true;
     }
-    // В идеале вызывается каждый ход чтобы понимать жив ли корабль, потом надо понять как закрасить клетки если мертв
-    public void checkAlive(){
+    // Теперь вызывается внутри isAlive(), а он должен будет вызываться КАЖДЫЙ ход
+    private void checkAlive(){
         int hitPoints = 0;
         for(ShipPart part : parts){
             if(part.getHit()){
@@ -28,6 +28,11 @@ public class Ship { // Корабль
         if(hitPoints == size){
             alive = false;
         }
+    }
+
+    public boolean isAlive(){
+        checkAlive();
+        return alive;
     }
 
 }

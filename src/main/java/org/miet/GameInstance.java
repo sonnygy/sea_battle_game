@@ -29,6 +29,14 @@ public class GameInstance { // Синглетон игры
         this.state = state;
     }
 
+    public BoardProxy getBoardProxy1(){
+        return new BoardProxy(board1);
+    }
+
+    public BoardProxy getBoardProxy2(){
+        return new BoardProxy(board2);
+    }
+
     public void play(){ // Вызываем чтоб начать
         // Здесь идет вся игра (зависит от state)
         switch (state){
