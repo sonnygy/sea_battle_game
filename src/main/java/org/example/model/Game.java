@@ -8,7 +8,7 @@ public class Game {
     private List<Board> boards = new ArrayList<>();
 
     public Game() {
-
+        Player player =
     }
     
 }

@@ -1,13 +1,18 @@
 package org.example.model;
 
-public class Ship {
-    protected static int size;
-    protected int health;
-    protected shipStatus status;
+import java.util.List;
 
-    public Ship(int size) {
+public class Ship {
+    private final int size;
+    private int health;
+    private shipStatus status;
+    private List<Coordinate> coordinates;
+
+    public Ship(int size, List<Coordinate> coordinates) {
         this.size = size;
-        this.status = shipStatus.fulled;
+        this.health = size;
+        this.coordinates = coordinates;
+        this.status = shipStatus.full;
     }
 
     public void setStatus(shipStatus status) {

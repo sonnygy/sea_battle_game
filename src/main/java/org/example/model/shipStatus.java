@@ -1,7 +1,7 @@
 package org.example.model;
 
 public enum shipStatus {
-    fulled,
+    full,
     damaged,
     destroyed
 }

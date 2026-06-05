@@ -13,6 +13,15 @@ public class BoardController {
 
     public void initBoard() {
         boardView.initMenu();
+        for (int i = 0; i < 4 ; i++) {
+
+        }
+        for (int i = 0; i < 3 ; i++) {
+
+        }
+        for (int i = 0; i < 2 ; i++) {
+
+        }
         boardView.draw(board);
     }
 }
