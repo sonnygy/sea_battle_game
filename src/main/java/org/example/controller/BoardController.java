@@ -1,8 +1,11 @@
 package org.example.controller;
-import org.example.view.BoardView;
-import org.example.model.Board;
+import org.example.view.*;
+import org.example.model.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class BoardController {
+public class BoardController implements Controller{
+    private final List<Observer> observers = new ArrayList<>();
     private BoardView boardView;
     private Board board;
 
@@ -14,4 +17,10 @@ public class BoardController {
     public void initBoard() {
         boardView.draw(board);
     }
+    @Override
+    public void attach(Observer observer){}
+    @Override
+    public void detach(Observer observer){}
+    @Override
+    public void notifyObservers(){}
 }

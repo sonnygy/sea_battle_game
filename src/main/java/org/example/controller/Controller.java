@@ -1,4 +1,7 @@
 package org.example.controller;
 
-public class Controller {
+public interface Controller {
+    void attach(Observer observer);
+    void detach(Observer observer);
+    void notifyObservers();
 }
