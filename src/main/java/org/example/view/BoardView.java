@@ -2,6 +2,15 @@ package org.example.view;
 import org.example.model.*;
 public class BoardView {
 
+    public void initMenu() {
+        System.out.print("=== Заполнение поля ===");
+        System.out.print("Разместите на поле корабли:");
+        System.out.print("4 x ■");
+        System.out.print("3 x ■■");
+        System.out.print("2 x ■■■");
+        System.out.print("1 x ■■■■");
+    }
+
     public void draw(Board board) {
         Cell[][] cells = board.getCells();
 
