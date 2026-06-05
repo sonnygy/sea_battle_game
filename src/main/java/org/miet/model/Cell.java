@@ -26,4 +26,8 @@ public class Cell { // Клетка
             throw new RuntimeException("Cell already was shot"); // Уже стреляли братан, еще раз нельзя
         }
     }
+
+    public CellState getCellState() { // Получить состояние
+        return cellState;
+    }
 }
